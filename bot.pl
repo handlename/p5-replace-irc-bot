@@ -37,7 +37,7 @@ AnySan->register_listener(
         cb => sub {
             my ($receive) = @_;
 
-            if ($receive->message =~ qr!(s/[^/]+/[^/]*/[gi]*)! &&
+            if ($receive->message =~ qr!((^|\b)s/[^/]+/[^/]*/[gi]*(\b|$))! &&
                 defined $messages->{$receive->from_nickname})
             {
                 my $regex   = $1;
